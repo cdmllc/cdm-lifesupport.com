@@ -59,16 +59,17 @@ nav a{text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.08em}
 .hero{padding:88px 0 72px}
 .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:52px;align-items:center}
 .eyebrow{font-size:12px;font-weight:800;letter-spacing:.16em;color:var(--accent);margin-bottom:18px}
-.hero h1{font-size:clamp(42px,7vw,76px);line-height:1.08;letter-spacing:-.03em;margin:0 0 24px}
+.hero h1{font-size:clamp(40px,5.5vw,64px);line-height:1.12;letter-spacing:-.03em;margin:0 0 24px}
 .hero h1 span{display:block;color:var(--accent)}
 .hero p{font-size:18px;max-width:700px;color:#4e5968;margin:0 0 28px}
 .actions{display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-block;padding:14px 20px;border-radius:8px;text-decoration:none;font-weight:800}
 .btn.primary{background:var(--ink);color:#fff}
 .btn.secondary{border:1px solid #cfd5dc;background:#fff}
-.hero-card{background:#d9dde0 url(assets/ceo-iwao.jpg) center top/cover no-repeat;border-radius:24px;min-height:510px;position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:28px}
+.hero-card{background:#f1eeee;border-radius:24px;min-height:510px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px}
+.hero-logo{width:min(78%,360px);height:auto;mix-blend-mode:multiply}
 
-.hero-card-copy{background:rgba(15,23,32,.9);color:#fff;padding:22px;border-radius:16px;max-width:310px;position:relative}
+.hero-card-copy{background:rgba(255,255,255,.82);color:var(--ink);padding:18px 20px;border-radius:14px;max-width:310px;position:relative;text-align:center;margin-top:20px}
 .hero-card-copy small{display:block;opacity:.7;letter-spacing:.12em}
 .hero-card-copy strong{font-size:22px;display:block;margin:4px 0 6px}
 
@@ -137,7 +138,7 @@ footer{padding:34px 0;font-size:13px;color:#697586}
 @media(max-width:640px){
   .wrap{padding:0 20px}
   .hero{padding:64px 0 52px}
-  .hero h1{font-size:44px}
+  .hero h1{font-size:42px}
   .hero p{font-size:16px}
   .trust-grid,.service-grid,.strength-grid,.recruit-grid,.contact-box{grid-template-columns:1fr}
   section{padding:68px 0}
@@ -158,7 +159,7 @@ footer{padding:34px 0;font-size:13px;color:#697586}
       <a href="#strength">STRENGTH</a>
       <a href="#company">COMPANY</a>
       <a href="recruit.html">RECRUIT</a>
-      <a class="nav-cta" href="#contact">CONTACT</a>
+      <a class="nav-cta" href="https://lin.ee/sDyfTJl" target="_blank" rel="noopener noreferrer">CONTACT</a>
     </nav>
   </div>
 </header>
@@ -168,18 +169,19 @@ footer{padding:34px 0;font-size:13px;color:#697586}
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow">SALES & RETAIL PROMOTION</div>
-      <h1>営業の現場に、<span>成果を生む仕組みを。</span></h1>
+      <h1>営業の現場に、成果を生む仕組みを。</h1>
       <p>合同会社CDMは、営業代行と通信販促支援を通じて、企業の新規顧客獲得と販売現場の成果創出を支援します。商材理解から現場稼働まで、案件ごとに最適な営業体制を設計します。</p>
       <div class="actions">
-        <a class="btn primary" href="#contact">法人のお問い合わせ</a>
+        <a class="btn primary" href="https://lin.ee/sDyfTJl" target="_blank" rel="noopener noreferrer">法人のお問い合わせ</a>
         <a class="btn secondary" href="recruit.html">採用情報を見る</a>
       </div>
     </div>
-    <div class="hero-card" aria-label="代表者写真掲載予定">
+    <div class="hero-card" aria-label="合同会社CDM ロゴ">
+      <img class="hero-logo" src="assets/cdm-logo.png" alt="CDM ロゴ">
       <div class="hero-card-copy">
-        <small>CEO MESSAGE</small>
-        <strong>現場で信頼される営業会社へ。</strong>
-        <span>代表社員　岩男 大輝</span>
+        <small>CDM</small>
+        <strong>営業・通信販促支援</strong>
+        <span>成果を生む現場づくりを。</span>
       </div>
     </div>
   </div>
@@ -236,9 +238,10 @@ footer{padding:34px 0;font-size:13px;color:#697586}
     <div class="photo-placeholder"></div>
     <div class="message">
       <div class="label">MESSAGE</div>
-      <h3>信頼は、営業の前提条件。<br>だからこそ、結果だけでなく過程にも向き合う。</h3>
-      <p>営業代行も通信販促も、最終的に現場で顧客と向き合うのは「人」です。CDMでは、目先の数字だけでなく、取引先・顧客・現場スタッフの全員にとって継続できる営業をつくることを重視しています。</p>
-      <p>まだ若い会社だからこそ、スピード感を持って改善し続け、依頼された仕事に対して誠実に結果を返す。その積み重ねで、長く付き合える会社を目指します。</p>
+      <h3>営業を前向きに楽しみ、信頼を積み重ねる。</h3>
+      <p>私は個人事業主として5年間、営業に携わってきました。その経験を基に合同会社CDMを立ち上げ、独立しました。現在は、新たに立ち上げた株式会社Talent Pathの役員として、人材領域にも事業を広げています。</p>
+      <p>CDMでは、営業を単に厳しい仕事として捉えるのではなく、楽しむ姿勢を大切にしています。営業は、一つひとつのことを丁寧に積み重ねることで、大きな成果につながる仕事です。</p>
+      <p>取引先・顧客・スタッフが互いに向き合い、目先の数字だけにとらわれず、誰もが続けやすく成果に向かって走り続けられる環境を整えます。若い会社だからこそ、スピード感を持って改善を重ね、いただいた仕事に誠実に結果で応える。長くお付き合いいただける会社を目指します。</p>
       <div class="signature">合同会社CDM　代表社員　岩男 大輝</div>
     </div>
   </div>
@@ -260,8 +263,8 @@ footer{padding:34px 0;font-size:13px;color:#697586}
       <article class="job">
         <div class="label">CONTRACT</div>
         <h3>業務委託</h3>
-        <p>営業経験を活かし、成果に応じて収入を伸ばしたい方向け。営業案件または通信販促案件で稼働いただきます。</p>
-        <dl><dt>営業</dt><dd>完全成果報酬 / フルリモート可</dd><dt>通信稼働</dt><dd>日給13,000円〜</dd><dt>昇格後</dt><dd>日給15,000円以上</dd></dl>
+        <p>営業案件、または量販店・催事での通信販促案件で稼働いただきます。案件により、完全成果報酬または日給制から選べます。</p>
+        <dl><dt>完全成果報酬</dt><dd>フルリモート可</dd><dt>日給制</dt><dd>通信販促など日給13,000円〜の案件あり</dd><dt>昇格後</dt><dd>日給15,000円以上</dd></dl>
       </article>
       <article class="job">
         <div class="label">FULL-TIME</div>
@@ -270,8 +273,9 @@ footer{padding:34px 0;font-size:13px;color:#697586}
         <dl><dt>目安</dt><dd>平均約3ヶ月でクローザー昇格</dd><dt>条件例</dt><dd>月20日稼働</dd><dt>給与</dt><dd>月給28万円〜</dd></dl>
       </article>
     </div>
+    <p class="recruit-note">営業の基礎を学びたい方、就職活動で語れる実践経験を積みたい方、将来自分で事業を立ち上げたい方を歓迎します。成果と意欲に応じて、事業部の立ち上げや子会社代表など、事業を任せるキャリアも用意しています。</p>
     <p class="recruit-note">※営業案件は成果報酬制です。通信販促は案件・経験等により条件が異なる場合があります。正社員登用を含む最終条件は面談時に提示します。</p>
-    <div class="actions" style="margin-top:26px"><a class="btn primary" href="mailto:ceo@cdm-lifesupport.com?subject=採用についてのお問い合わせ">採用について問い合わせる</a></div>
+    <div class="actions" style="margin-top:26px"><a class="btn primary" href="https://lin.ee/sDyfTJl" target="_blank" rel="noopener noreferrer">LINEで採用について問い合わせる</a></div>
   </div>
 </section>
 
@@ -297,18 +301,18 @@ footer{padding:34px 0;font-size:13px;color:#697586}
   <div class="wrap">
     <div class="section-head">
       <div><div class="label">CONTACT</div><h2>お問い合わせ</h2></div>
-      <p>法人案件のご相談と採用のお問い合わせを分けて受け付けています。</p>
+      <p>法人案件・採用についてのご相談は、公式LINEから受け付けています。</p>
     </div>
     <div class="contact-box">
       <div>
         <h3>法人のお問い合わせ</h3>
         <p>営業代行、通信販促、量販店・催事での販売支援についてご相談ください。</p>
-        <a class="contact-link" href="mailto:ceo@cdm-lifesupport.com?subject=法人のお問い合わせ">ceo@cdm-lifesupport.com →</a>
+        <a class="contact-link" href="https://lin.ee/sDyfTJl" target="_blank" rel="noopener noreferrer">公式LINEで相談する →</a>
       </div>
       <div>
         <h3>採用のお問い合わせ</h3>
         <p>インターン、正社員、業務委託への応募・相談はこちらから。</p>
-        <a class="contact-link" href="mailto:ceo@cdm-lifesupport.com?subject=採用についてのお問い合わせ">採用について問い合わせる →</a>
+        <a class="contact-link" href="https://lin.ee/sDyfTJl" target="_blank" rel="noopener noreferrer">公式LINEで問い合わせる →</a>
       </div>
     </div>
   </div>

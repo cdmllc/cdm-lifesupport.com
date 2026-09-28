@@ -42,6 +42,7 @@ for(const file of files) if(file!=='404.html') assert(reached.has(file),`${file}
 const sitemap=await readFile(resolve(root,'sitemap.xml'),'utf8');
 assert.equal((sitemap.match(/<loc>/g)||[]).length,files.length-1,'all public pages in sitemap');
 assert(!sitemap.includes('404.html'),'404 excluded from sitemap');
+assert(documents.get('404.html').includes('<base href="/">'),'404 links and assets resolve from root, even for an unknown nested URL');
 assert(!documents.get('index.html').includes('cdm-operations-hero'),'TOP uses supplied logo, not generated hero');
 assert.equal((documents.get('index.html').match(/class="service-number"/g)||[]).length,3,'all business numbers use the same structure');
 assert(documents.get('contact.html').includes('このフォームから直接送信はされません'),'form explains mail workflow');

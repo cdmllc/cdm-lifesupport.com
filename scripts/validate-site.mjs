@@ -3,6 +3,9 @@ import {readFile,access,readdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {resolve,dirname} from 'node:path';
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const stylesheet=await readFile(resolve(root,'assets/site.css'),'utf8');
+const ink=stylesheet.match(/--ink:\s*(#[0-9a-f]{6})/i)[1];
+assert(!/#07573c|#1766da|#0b4fab/i.test(stylesheet),'legacy green and vivid blue are not mixed into the new palette');
 const files=(await readdir(root)).filter(f=>f.endsWith('.html'));
 const documents=new Map(await Promise.all(files.map(async f=>[f,await readFile(resolve(root,f),'utf8')])));
 const ids=new Map();
@@ -16,6 +19,8 @@ for(const [file,html] of documents){
   assert(/<meta name="description" content="[^"]+"/.test(html),`${file}: description`);
   assert(/<meta name="viewport"/.test(html),`${file}: viewport`);
   assert(/<link rel="canonical"/.test(html),`${file}: canonical`);
+  assert(html.includes(`<meta name="theme-color" content="${ink}">`),`${file}: theme matches the shared palette`);
+  assert(/href="assets\/site\.css\?v=[0-9a-f]+"/.test(html),`${file}: shared, versioned stylesheet`);
   const pageIds=[...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
   assert.equal(pageIds.length,new Set(pageIds).size,`${file}: unique ids`); ids.set(file,new Set(pageIds));
   const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);

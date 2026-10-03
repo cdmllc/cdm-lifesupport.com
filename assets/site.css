@@ -142,6 +142,12 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .columns article{border-top:1px solid var(--line);padding-top:24px}
 .columns h3{font-size:21px;margin-bottom:16px}
 .columns p{font-size:15px;color:var(--muted)}
+.crm-plans{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;margin:0 0 24px}
+.crm-plans article{border:1px solid var(--line);padding:30px}
+.crm-plans h3{font-size:25px;margin:10px 0 18px}
+.crm-plans p{color:var(--muted)}
+.crm-plans .crm-price{color:var(--text);font-size:17px;line-height:2}
+.crm-plans .crm-price strong{font-size:26px}
 .related{display:flex;flex-wrap:wrap;gap:16px 40px;margin-top:35px;padding-top:24px;border-top:1px solid var(--line)}
 .related .text-link{font-size:13px}
 .prose{max-width:800px;margin:0 auto}
@@ -347,6 +353,8 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,te
 .split h3{font-size:25px}
 .statement{font-size:27px}
 .columns article{padding:25px 0}
+.crm-plans{grid-template-columns:1fr;gap:16px}
+.crm-plans article{padding:24px}
 .columns h3{font-size:21px}
 .related{gap:14px 25px}
 .company-data>div{grid-template-columns:1fr;gap:8px;padding:22px 0}

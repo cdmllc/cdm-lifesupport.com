@@ -47,12 +47,19 @@ filters.forEach(button => button.addEventListener('click', () => {
 const form = document.querySelector('#contact-form');
 if (form) {
   const types = ['事業のご相談','採用について','パートナー連携','その他'];
-  const category = new URLSearchParams(location.search).get('type');
+  const query = new URLSearchParams(location.search);
+  const category = query.get('type');
+  const service = query.get('service');
   if (types.includes(category)) form.elements.category.value = category;
+  if ([...form.elements.service.options].some(option => option.value === service)) form.elements.service.value = service;
   document.querySelectorAll('[data-contact-type]').forEach(a => a.addEventListener('click', () => {
     form.elements.category.value = a.dataset.contactType;
+    if (a.dataset.contactType !== '事業のご相談') form.elements.service.value = '';
     clearReview();
   }));
+  form.elements.category.addEventListener('change', () => {
+    if (form.elements.category.value !== '事業のご相談') form.elements.service.value = '';
+  });
   const review = document.querySelector('#mail-review');
   const preview = document.querySelector('#mail-preview');
   const mailLink = document.querySelector('#mail-link');
@@ -75,8 +82,9 @@ if (form) {
       input.addEventListener('input', () => input.setCustomValidity(''), {once:true});
       return;
     }
-    const subject = `【CDMお問い合わせ】${clean('category')}／${name.replace(/[\r\n]/g,' ')}`;
-    const body = `合同会社CDM ご担当者様\n\n以下の内容で問い合わせいたします。\n\nお問い合わせ種別：${clean('category')}\n会社名：${clean('company') || '未記入'}\nお名前：${name}\nメールアドレス：${email}\n電話番号：${clean('phone') || '未記入'}\n\nお問い合わせ内容：\n${message}\n\nプライバシーポリシーに同意しました。`;
+    const chosenService = clean('service');
+    const subject = `【CDMお問い合わせ】${clean('category')}${chosenService ? `／${chosenService}` : ''}／${name.replace(/[\r\n]/g,' ')}`;
+    const body = `合同会社CDM ご担当者様\n\n以下の内容で問い合わせいたします。\n\nお問い合わせ種別：${clean('category')}\nご相談サービス：${chosenService || '未指定'}\n会社名：${clean('company') || '未記入'}\nお名前：${name}\nメールアドレス：${email}\n電話番号：${clean('phone') || '未記入'}\n\nお問い合わせ内容：\n${message}\n\nプライバシーポリシーに同意しました。`;
     preview.textContent = `宛先：ceo@cdm-lifesupport.com\n件名：${subject}\n\n${body}`;
     mailLink.href = `mailto:ceo@cdm-lifesupport.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     review.hidden = false;

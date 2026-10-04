@@ -1,6 +1,7 @@
 import {page,section,paras,list,split,rows,columns,related,link,btn,arrow,serviceCards,services,strengths,values,caseCards,cases,newsRows,news,faq,faqItems,numbers,messageExcerpt,flow} from './ui.mjs';
+import {productList,productPages,productRail} from './products.mjs';
 
-const consult = type => `contact.html?type=${encodeURIComponent(type)}`;
+const consult = (type, service = '') => `contact.html?type=${encodeURIComponent(type)}${service ? `&service=${encodeURIComponent(service)}` : ''}`;
 const businessLinks = [['sales.html','営業代行'],['promotion.html','販促支援'],['systems.html','システム販売']];
 const recruitLinks = [['recruit.html','採用情報'],['careers.html','働く環境・キャリア'],['jobs.html','募集要項']];
 const jobs = `<div class="job-grid">
@@ -13,6 +14,7 @@ const companyData = `<dl class="company-data"><div><dt>会社名</dt><dd>合同�
 const history = `<ol class="timeline"><li><time>2025.02</time><div><h3>合同会社CDM 設立</h3><p>神奈川県平塚市を拠点に、企業の営業・販売活動を支援する会社として設立。</p></div></li><li><time>2025</time><div><h3>営業・販売支援事業を開始</h3><p>新規開拓の営業活動や、量販店・催事会場での販売現場を支援。</p></div></li><li><time>2026</time><div><h3>システム販売事業を開始</h3><p>CRMなど、顧客・案件・入金・タスクの管理を支えるシステムの提案・販売へ展開。</p></div></li><li><time datetime="2026-09-28">2026.09</time><div><h3>コーポレートサイトをリニューアル</h3><p>事業詳細、会社紹介、支援の流れ、採用情報などのページを拡充。</p></div></li></ol>`;
 const contactForm = `<div class="type-grid">${['事業のご相談','採用について','パートナー連携','その他'].map(t=>`<a href="#contact-form" data-contact-type="${t}">${t}${arrow}</a>`).join('')}</div><div class="form-layout"><div><form id="contact-form" class="contact-form"><fieldset class="form-fields" disabled aria-label="お問い合わせ内容">
 <div class="field wide"><label for="category">お問い合わせ種別<span class="required">必須</span></label><select id="category" name="category" required><option>事業のご相談</option><option>採用について</option><option>パートナー連携</option><option>その他</option></select></div>
+<div class="field wide"><label for="service">ご相談サービス<span class="required">任意</span></label><select id="service" name="service"><option value="">選択してください</option>${['顧客・案件管理CRM','ホームページ制作','LP制作','Excel管理表作成','業務マニュアル作成','営業代行','販促支援','その他'].map(name=>`<option>${name}</option>`).join('')}</select></div>
 <div class="field"><label for="company">会社名<span class="required">任意</span></label><input id="company" name="company" autocomplete="organization" maxlength="150"></div>
 <div class="field"><label for="name">お名前<span class="required">必須</span></label><input id="name" name="name" autocomplete="name" required maxlength="100"></div>
 <div class="field"><label for="email">メールアドレス<span class="required">必須</span></label><input id="email" name="email" type="email" autocomplete="email" required maxlength="200"></div>
@@ -28,6 +30,7 @@ export const pages = {
 `<section class="hero"><div class="wrap hero-grid"><div><h1>営業の現場に、<br><span>成果を生む仕組みを。</span></h1><p>合同会社CDMは、営業代行・販促支援・システム販売を通じて、企業の売上創出と業務改善を支援します。現場に入り、実行し、改善する。成果につながる仕組みを、一緒につくります。</p><div class="actions">${btn('business.html','事業内容を見る')}${btn('recruit.html','採用情報を見る',true)}</div></div><figure class="hero-logo-frame"><img src="assets/cdm-logo.png" width="500" height="500" alt="合同会社CDMのロゴ"><figcaption>営業・販促・システム販売<br>成果を生む現場づくりを。</figcaption></figure></div></section><div class="wrap"><div class="facts"><div class="fact"><strong>3領域</strong><span>営業代行／販促支援／システム販売</span></div><div class="fact"><strong>量販店・催事</strong><span>店頭・会場での販促支援</span></div><div class="fact"><strong>成果連動</strong><span>案件条件に応じた営業設計</span></div><div class="fact"><strong>2025年設立</strong><span>神奈川県平塚市を拠点に展開</span></div></div></div>`+
 section('<span class="section-label">ABOUT CDM</span>成果が生まれる「現場」をつくる。',split('現場から、事業を前へ。',paras(['どれだけ優れた商品やサービスでも、届ける仕組みがなければ顧客には届きません。','CDMは、営業活動・販売現場・業務管理という、事業の成果に直結する3つの領域を支援しています。']),paras(['人が動く。営業が動く。情報が整理される。','その一つひとつを改善し、企業が継続的に成果を生み出せる状態をつくることが、私たちの仕事です。'])+link('about.html','CDMについて')))+
 section('<span class="section-label">BUSINESS</span>事業内容',serviceCards(),{id:'service'})+
+section('<span class="section-label">PRODUCTS</span>制作・業務支援',productRail(),{tone:'soft',intro:'顧客管理、Web制作、日々の業務整理。小規模事業の必要な部分からご相談いただけます。'})+
 section('<span class="section-label">STRENGTH</span>実行と改善を、止めない。',rows(strengths)+related([['strength.html','私たちの強み'],['quality.html','品質管理']]),{id:'strength',tone:'dark'})+
 section('<span class="section-label">MESSAGE</span>代表メッセージ',messageExcerpt,{id:'message'})+
 section('<span class="section-label">CASE STUDY</span>支援の取り組み',caseCards()+link('cases.html','支援事例一覧'),{tone:'soft',intro:'営業・販促・CRMで、どのような業務を支えるか。支援内容と活用イメージをご紹介します。'})+
@@ -55,6 +58,7 @@ section('3つの事業を、同じ現場目線で。',split('部分だけでな�
 
 'business.html':page('事業内容','営業代行・販促支援・システム販売。3つの領域から、企業の売上創出と業務改善を支援します。',
 section('3つの領域から、事業を前へ。',serviceCards())+
+section('制作・業務支援の商品',productRail(),{tone:'soft',intro:'CRM・ホームページ・LP・Excel管理表・業務マニュアルを、業務の状況に合わせてご案内します。'})+
 section('必要な工程から、ご相談ください。',columns([['新規開拓を進めたい','ターゲットの整理、アプローチ、アポイント獲得、商談など、現在足りていない工程からご相談いただけます。'],['販売現場を支えたい','量販店や催事会場での接客、商談、スタッフ育成、現場運営を、案件の条件に合わせて考えます。'],['案件・入金を整理したい','顧客や案件の進捗が見えにくい、入金予定が確認しづらいといった課題を、CRMなどのシステムで整理します。']]),{tone:'soft'})+
 section('はじめてご相談される方へ',related([['flow.html','支援の流れ'],['quality.html','品質管理'],['cases.html','支援事例'],['faq.html','よくあるご質問']])), 'business',{demo:true}),
 
@@ -81,8 +85,14 @@ section('現場経験を、商材に合わせて活かす。',`<div class="prose
 section('現場で使える、業務の見える化。',split('情報を、次の行動につなげる。',paras(['顧客情報は表計算シート、進捗はチャット、入金予定は別の一覧。情報が分かれていると、確認に時間がかかり、対応が属人化しやすくなります。','CDMは、業務の流れを確認したうえで、CRMなどの管理システムを提案します。機能を増やすことよりも、必要な情報が確認でき、担当者が動きやすいことを大切にします。']),`<img src="assets/crm-demo-dashboard.png" width="1487" height="1058" alt="CRMダッシュボードの画面イメージ" loading="lazy"><button class="text-link" data-open-demo type="button">CRMの画面イメージを見る${arrow}</button><p class="note">画面はイメージです。画像内の企業名・金額などはデモ表示です。</p>`))+
 section('管理できる情報のイメージ',rows([['顧客・担当者','連絡先、対応履歴、担当者など、顧客との接点を整理します。'],['案件・進捗','現在のステータス、次回アクション、対応期限を確認できる設計です。'],['売上・入金','案件ごとの売上、自社入金予定、入金月、入金済・未入金の状況を管理します。'],['必要書類・タスク','書類の回収状況と次に必要な作業を整理し、対応漏れを確認しやすくします。'],['商材・進行フロー','商材ごとの管理項目やステータスを、業務の進め方に合わせて検討します。']]),{tone:'soft'})+
 section('小規模事業者向けCRM',`<div class="prose">${paras(['少人数の法人・個人事業主が、問い合わせから商談、受注、入金までを一つの画面で追えるようにするCRMです。不動産、採用・人材、営業代行など、業務に合わせて商材と案件ステータスを設定できます。','標準構成は1社・1拠点・3名まで。利用する業務を確認し、既定の設定から導入内容を決めます。業種固有の追加開発、既存データの移行、外部サービスとの連携は別途お見積もりします。'])}<button class="btn" type="button" data-open-demo>CRMの画面イメージを見る${arrow}</button>${related([['case-crm.html','不動産賃貸仲介での活用イメージ']])}</div>`)+
-section('料金プラン',`<div class="crm-plans"><article><p class="small-label">MONTHLY</p><h3>月額利用</h3><p class="crm-price">初期設定 <strong>50,000円</strong><br>月額 <strong>5,000円</strong></p><p>3名まで。4名目から1名につき月額2,000円を追加します。専用の利用環境と標準設定、共通の不具合修正を含みます。</p></article><article><p class="small-label">BUYOUT</p><h3>買い切り</h3><p class="crm-price">利用権 <strong>150,000円</strong><br>年額保守 <strong>3,000円</strong></p><p>3名まで。顧客名義の稼働環境で利用し、クラウド利用料はお客様が直接負担します。4名以上は別途お見積もりします。</p></article></div><p class="note">表示額は税別です。税込では初期設定55,000円、月額5,500円、追加1名あたり月額2,200円、買い切り165,000円、年額保守3,300円です（消費税10%）。買い切りはソースコードの譲渡・再販権を含みません。年額保守は共通版の更新案内・提供で、個別の操作支援・障害対応・データ復旧・機能追加を含みません。正式な機能範囲、納期、契約条件は導入前にお見積もりで確認します。</p>${btn(consult('事業のご相談'),'CRMの導入を相談する')}`,{tone:'soft'})+
-section('導入前に確認すること',columns([['現在の運用','管理中の項目、使っているシート、案件の進め方、担当者間の共有方法を確認します。'],['必要な機能','優先して整理したい情報を決めます。外部連携や追加開発、移行の可否は個別に検討します。'],['利用・保守条件','利用人数、権限、データの取り扱い、サポート、契約期間、費用を提案時に明確にします。']])+related([['flow.html','支援の流れ'],['faq.html','よくあるご質問'],[consult('事業のご相談'),'システムについて相談']]),{tone:'soft'}),'business',{demo:true}),
+section('料金プラン',`<div class="crm-plans"><article><p class="small-label">MONTHLY</p><h3>月額利用</h3><p class="crm-price">初期設定 <strong>50,000円</strong><br>月額 <strong>5,000円</strong></p><p>3名まで。4名目から1名につき月額2,000円を追加します。専用の利用環境と標準設定、共通の不具合修正を含みます。</p></article><article><p class="small-label">BUYOUT</p><h3>買い切り</h3><p class="crm-price">利用権 <strong>150,000円</strong><br>年額保守 <strong>3,000円</strong></p><p>3名まで。顧客名義の稼働環境で利用し、クラウド利用料はお客様が直接負担します。4名以上は別途お見積もりします。</p></article></div><p class="note">表示額は税別です。税込では初期設定55,000円、月額5,500円、追加1名あたり月額2,200円、買い切り165,000円、年額保守3,300円です（消費税10%）。買い切りはソースコードの譲渡・再販権を含みません。年額保守は共通版の更新案内・提供で、個別の操作支援・障害対応・データ復旧・機能追加を含みません。正式な機能範囲、納期、契約条件は導入前にお見積もりで確認します。</p>${btn(consult('事業のご相談','顧客・案件管理CRM'),'CRMの導入を相談する')}`,{tone:'soft'})+
+section('導入前の確認・ご相談',`<div class="product-contact"><div><p>外販環境の受入検証を進めています。導入可否、利用環境、機能範囲、クラウド実費、納期を確認するため、購入前のご相談が必須です。即納や検証完了を前提にしたご案内はしていません。</p><p>このサイトのお問い合わせフォームで商品名を選び、業種・利用人数・拠点数・現在の管理方法・必要機能・希望時期を、分かる範囲でお知らせください。実在顧客の個人情報は伏せていただいて構いません。</p></div><div class="product-contact-actions">${btn(consult('事業のご相談','顧客・案件管理CRM'),'CRMについて問い合わせる')}</div></div><p class="note">正式な機能範囲、費用、納期、契約条件は、ご相談後のお見積もりで確認します。</p>${related([['products.html','商品・料金一覧']])}`)+
+section('導入前に確認すること',columns([['現在の運用','管理中の項目、使っているシート、案件の進め方、担当者間の共有方法を確認します。'],['必要な機能','優先して整理したい情報を決めます。外部連携や追加開発、移行の可否は個別に検討します。'],['利用・保守条件','利用人数、権限、データの取り扱い、サポート、契約期間、費用を提案時に明確にします。']])+related([['flow.html','支援の流れ'],['faq.html','よくあるご質問'],[consult('事業のご相談','顧客・案件管理CRM'),'システムについて相談']]),{tone:'soft'}),'business',{demo:true}),
+
+'products.html':page('商品・料金','個人事業主・小規模法人向け。CRM、ホームページ、LP、Excel管理表、業務マニュアルの内容と料金をご案内します。',
+section('事業を整える、5つのサービス。',productList()+`<p class="note">表示額は税別で、税込額も併記しています。CRMの月額・買い切り条件は詳細ページをご覧ください。追加作業が必要な場合は、事前にお見積もりします。</p>`,{intro:'まず必要なものを一緒に整理します。掲載の基本範囲を超える場合は、内容を伺ってからお見積もりします。'})+
+section('ご相談から納品まで',rows([['商品・課題を選ぶ','現在の管理方法や、作りたいものを大まかにお知らせください。どの商品が合うか分からない段階でもご相談いただけます。'],['仕様と条件を確認','対象業務、納品範囲、素材、利用環境、費用、納期を確認します。CRMは外販環境の受入検証中のため、購入前相談が必須です。'],['お見積もり・お申込み','このサイトのお問い合わせフォームからご連絡ください。ご相談内容に応じて正式なお見積もりをお送りします。'],['制作・受入確認','表示・動作・記載内容を確認し、合意した範囲内の修正を経て納品します。']])+btn(consult('事業のご相談'),'商品について相談する'),{tone:'soft'}),'products'),
+...productPages,
 
 'cases.html':page('支援事例','営業・販促・CRMで、どのような業務を支えるか。取り組みの内容と活用イメージをご紹介します。',
 section('支援の取り組み',caseCards(),{intro:'個別のお取引先名や成果数値は掲載せず、支援する業務と進め方をご紹介しています。システムの画面はデモイメージです。'})+

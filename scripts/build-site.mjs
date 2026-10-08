@@ -11,6 +11,18 @@ const site = 'https://cdm-lifesupport.com';
 const stylesheet = await readFile(resolve(root,'assets/site.css'),'utf8');
 const themeColor = stylesheet.match(/--ink:\s*(#[0-9a-f]{6})/i)[1];
 const assetVersion = createHash('sha256').update(stylesheet).update(await readFile(resolve(root,'assets/site.js'))).digest('hex').slice(0,10);
+const analyticsTag = `<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZR0EH3ST4D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZR0EH3ST4D', {
+    allow_google_signals: false,
+    allow_ad_personalization_signals: false
+  });
+</script>
+`;
 const groups = [
   ['about','CDMについて','about.html', [['about.html','CDMについて'],['philosophy.html','理念・行動指針'],['message.html','代表メッセージ'],['strength.html','私たちの強み']]],
   ['business','事業内容','business.html', [['business.html','事業一覧'],['sales.html','営業代行'],['promotion.html','販促支援'],['systems.html','システム販売'],['quality.html','品質管理'],['flow.html','支援の流れ'],['faq.html','よくあるご質問']]],
@@ -34,7 +46,7 @@ for (const [file, p] of Object.entries(pages)) {
   const schema = [{'@context':'https://schema.org','@type':'Organization',name:'合同会社CDM',url:site,logo:`${site}/assets/cdm-logo.png`,email:'ceo@cdm-lifesupport.com',telephone:'070-9129-0907',foundingDate:'2025-02',address:{'@type':'PostalAddress',addressRegion:'神奈川県',addressLocality:'平塚市',streetAddress:'東八幡2-9-29',addressCountry:'JP'}},...(breadcrumbs.length ? [{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:breadcrumbs.map((b,i)=>({'@type':'ListItem',position:i+1,name:b.name,item:b.url}))}] : []),...(p.schema||[])];
   const hero = file==='index.html' ? '' : `<div class="wrap"><nav class="breadcrumbs" aria-label="パンくずリスト"><ol>${breadcrumbs.map((b,i)=>`<li>${i===breadcrumbs.length-1 ? `<span aria-current="page">${esc(b.name)}</span>` : `<a href="${b.url}">${esc(b.name)}</a>`}</li>`).join('')}</ol></nav><div class="page-hero"><h1>${p.heading||esc(p.title)}</h1><p>${p.lead}</p></div>${group ? `<nav class="section-nav" aria-label="${group[1]}のページ">${group[3].map(([url,name])=>`<a href="${url}"${url===file?' aria-current="page"':''}>${name}</a>`).join('')}</nav>` : ''}</div>`;
   const document = `<!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(p.description||p.lead.replace(/<[^>]*>/g,''))}"><meta name="robots" content="${file==='404.html'?'noindex,follow':'index,follow'}"><link rel="canonical" href="${canonical}"><link rel="icon" type="image/png" sizes="500x500" href="/favicon.png?v=cdm"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta property="og:type" content="${p.article?'article':'website'}"><meta property="og:site_name" content="合同会社CDM"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(p.description||p.lead.replace(/<[^>]*>/g,''))}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${site}/assets/cdm-logo.png"><meta name="twitter:card" content="summary"><meta name="theme-color" content="${themeColor}"><link rel="stylesheet" href="assets/site.css?v=${assetVersion}"><script src="assets/site.js?v=${assetVersion}" defer></script><script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script></head><body>${header(p)}<main id="main" tabindex="-1">${hero}${p.body}</main>${p.noCta?'':cta()}${footer()}${p.demo?demo():''}</body></html>\n`;
+<html lang="ja"><head><meta charset="utf-8">${analyticsTag}<meta name="viewport" content="width=device-width, initial-scale=1"><title>${esc(title)}</title><meta name="description" content="${esc(p.description||p.lead.replace(/<[^>]*>/g,''))}"><meta name="robots" content="${file==='404.html'?'noindex,follow':'index,follow'}"><link rel="canonical" href="${canonical}"><link rel="icon" type="image/png" sizes="500x500" href="/favicon.png?v=cdm"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="manifest" href="/site.webmanifest"><meta property="og:type" content="${p.article?'article':'website'}"><meta property="og:site_name" content="合同会社CDM"><meta property="og:title" content="${esc(title)}"><meta property="og:description" content="${esc(p.description||p.lead.replace(/<[^>]*>/g,''))}"><meta property="og:url" content="${canonical}"><meta property="og:image" content="${site}/assets/cdm-logo.png"><meta name="twitter:card" content="summary"><meta name="theme-color" content="${themeColor}"><link rel="stylesheet" href="assets/site.css?v=${assetVersion}"><script src="assets/site.js?v=${assetVersion}" defer></script><script type="application/ld+json">${JSON.stringify(schema).replace(/</g,'\\u003c')}</script></head><body>${header(p)}<main id="main" tabindex="-1">${hero}${p.body}</main>${p.noCta?'':cta()}${footer()}${p.demo?demo():''}</body></html>\n`;
   const formatted = document.replace(/(<\/(?:head|header|main|section|article|div|footer|nav|form|aside|details|h[1-6]|figure|fieldset)>)/g, '$1\n').replace(/(<(?:head|header|main|section|article|div|footer|nav|form|aside|details|h[1-6]|figure|fieldset)\b)/g, '\n$1');
   await writeFile(resolve(root,file),file==='404.html' ? formatted.replace('<meta charset="utf-8">','<meta charset="utf-8"><base href="/">') : formatted);
 }

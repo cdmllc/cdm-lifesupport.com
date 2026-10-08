@@ -27,7 +27,10 @@ for(const [file,html] of documents){
   assert.equal(pageIds.length,new Set(pageIds).size,`${file}: unique ids`); ids.set(file,new Set(pageIds));
   const schema=JSON.parse(html.match(/<script type="application\/ld\+json">(.*?)<\/script>/s)[1]);
   assert(schema.some(s=>s['@type']==='Organization'),`${file}: organization schema`);
-  for(const match of html.matchAll(/\bsrc="([^"]+)"/g)) await access(resolve(root,match[1].split('?')[0]));
+  for(const match of html.matchAll(/\bsrc="([^"]+)"/g)) {
+    if (/^https?:\/\//.test(match[1])) continue;
+    await access(resolve(root,match[1].split('?')[0]));
+  }
   destinations.set(file,[]);
 }
 for(const [file,html] of documents){

@@ -61,7 +61,13 @@ export const faq = [
   ['問い合わせフォームから直接送信されますか？','入力内容を確認後、「メールアプリを開く」を押すと、ceo@cdm-lifesupport.com 宛てのメールを作成します。最後にメールアプリで送信してください。公式LINEからのご相談も可能です。']
 ];
 export const faqItems = (items = faq) => `<div class="faq-list">${items.map(([q,a]) => `<details><summary>${q}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary><p>${a}</p></details>`).join('')}</div>`;
-export const numbers = () => `<div class="numbers"><div><strong>2025<span>年</span></strong><p>2月設立</p></div><div><strong>3<span>領域</span></strong><p>営業代行・販促支援・システム販売</p></div></div>`;
+export const numbers = () => `<div class="numbers"><div><strong><b data-count="2025">2025</b><span>年</span></strong><p>2月設立</p></div><div><strong><b data-count="3">3</b><span>領域</span></strong><p>営業代行・販促支援・システム販売</p></div><div><strong><b data-count="5">5</b><span>商品</span></strong><p>CRM・ホームページ・LP・Excel管理表・業務マニュアル</p></div></div>`;
+// Pentagon of the five strengths. All axes are equal: it shows the set, not a score.
+export const radar = () => {
+  const point = (i, r) => {const a = (-90 + i * 72) * Math.PI / 180; return [200 + r * Math.cos(a), 200 + r * Math.sin(a)].map(n => n.toFixed(1)).join(',');};
+  const ring = r => strengths.map((_, i) => point(i, r)).join(' ');
+  return `<svg viewBox="-30 -10 460 420" aria-hidden="true">${[.34,.67,1].map(f => `<polygon class="web" points="${ring(130 * f)}"/>`).join('')}${strengths.map((_, i) => `<line class="spoke" x1="200" y1="200" x2="${point(i,130).split(',')[0]}" y2="${point(i,130).split(',')[1]}"/>`).join('')}<polygon class="shape" points="${ring(112)}"/>${strengths.map(([name], i) => {const [x,y] = point(i,112).split(','); const [lx,ly] = point(i,166).split(','); return `<circle class="vertex" cx="${x}" cy="${y}" r="6" style="--d:${i*.12}s"/><text class="label" x="${lx}" y="${Number(ly)+5}" style="--d:${i*.12}s">${name}</text><text class="label radar-num" x="${lx}" y="${Number(ly)-16}" style="--d:${i*.12}s">0${i+1}</text>`;}).join('')}</svg>`;
+};
 export const messageExcerpt = `<div class="message-grid"><figure><img src="assets/ceo-iwao.jpg" width="800" height="1200" loading="lazy" alt="合同会社CDM 代表社員 岩男大輝"><figcaption>合同会社CDM 代表社員<br><strong>岩男 大輝</strong></figcaption></figure><div><h3>小さな積み重ねが、<br>大きな成果をつくる。</h3>${paras(['一件電話すること。一人のお客様と向き合うこと。昨日より一つ改善すること。営業の成果は、こうした丁寧な積み重ねから生まれます。','私たちはまだ若い会社です。だからこそ、速く動き、一つひとつの仕事に責任を持つ。いただいた仕事に、誠実に結果で応える会社であり続けます。'])}${link('message.html','代表メッセージを読む')}</div></div>`;
 export const flow = [
   ['お問い合わせ','相談したい業務や課題を、フォーム・メール・公式LINEでお知らせください。'],

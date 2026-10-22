@@ -75,6 +75,8 @@ assert(documents.get('contact.html').includes('このフォームから直接送
 assert(documents.get('contact.html').includes('営業・勧誘・売り込みを目的としたお問い合わせはご遠慮ください。返信いたしません。'),'contact page declines sales pitches');
 for(const [file,html] of documents) assert(html.includes('class="menu-toggle"') && html.includes('aria-label="メインナビゲーション"'),`${file}: hamburger menu`);
 for(const [file,html] of documents) if(file!=='index.html') assert(html.includes('aria-label="パンくずリスト"'),`${file}: breadcrumbs`);
+for(const [file,html] of documents) assert(html.includes('href="https://www.instagram.com/cdmlifesupport/"') && html.includes('href="https://lin.ee/u4CAtoE"'),`${file}: footer Instagram and LINE links`);
+for(const term of ['トスアップ型','クロージング型','ご負担いただく費用はありません','全国']) assert(documents.get('partner.html').includes(term),`partner page: ${term}`);
 assert(/<fieldset class="form-fields" disabled/.test(documents.get('contact.html')),'form remains disabled if its preventing-submit handler cannot initialize');
 for(const product of products) assert(documents.get('contact.html').includes(`<option>${product.name}</option>`),`${product.key}: optional consultation service`);
 assert((await readFile(resolve(root,'assets/site.js'),'utf8')).includes('ご相談サービス：${chosenService'), 'email draft identifies the selected service');

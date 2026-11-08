@@ -91,6 +91,10 @@ h1,h2,p{margin:0}
 .card-head span{font-size:13px;font-weight:700;letter-spacing:.06em}
 .card-head small{font-size:12px;color:var(--muted)}
 .dot{display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:#5fd39a;box-shadow:0 0 0 4px rgba(95,211,154,.15);vertical-align:1px}
+.len{display:inline-flex;gap:4px;padding:3px;border:1px solid var(--line-strong);border-radius:999px}
+.len button{font:inherit;font-size:12.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);background:none;border:0;border-radius:999px;padding:5px 14px;cursor:pointer}
+.len button[aria-pressed="true"]{background:var(--accent);color:var(--ink-3, #111)}
+.len button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .card iframe{display:block;width:100%;height:660px;border:0;background:#fff}
 .fallback{margin-top:14px;font-size:12.5px;color:var(--subtle);text-align:right}
 .fallback a{color:var(--muted)}
@@ -135,7 +139,7 @@ h1,h2,p{margin:0}
     </div>
 
     <ul class="facts">
-      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>60分</li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>30分 または 60分</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg>オンライン（Google Meet）</li>
       <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg>予約後、会議のURLがメールで届きます</li>
     </ul>
@@ -156,12 +160,24 @@ h1,h2,p{margin:0}
   <section class="booking" aria-label="日時を選ぶ">
     <div class="card">
       <div class="card-inner">
-        <div class="card-head"><span><i class="dot" aria-hidden="true"></i>空いている日時</span><small>日本時間で表示</small></div>
-        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3XoxGKvBMtOo6Hz45-ybwreitljRuN7MNbJOsFiM7mYYDdSa9QgGcOHAY4qnNlDL-VtbemhbVb?gv=true" title="Googleカレンダーの予約画面" loading="lazy"></iframe>
+        <div class="card-head"><span><i class="dot" aria-hidden="true"></i>空いている日時</span><div class="len" role="group" aria-label="時間の長さ"><button type="button" data-len="30" aria-pressed="true">30分</button><button type="button" data-len="60" aria-pressed="false">60分</button></div></div>
+        <iframe id="booking-frame" src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ37TB8RHTqmt2CUYF2OyKI7GbeVfeK6LOQavePNkC_7EHk4y3t7g8H8cEiM6FDZC185T2nFx2ZP?gv=true" title="Googleカレンダーの予約画面" loading="lazy"></iframe>
       </div>
     </div>
-    <p class="fallback">うまく表示されない場合は <a href="https://calendar.app.google/5KEGgd5cXiwzg21y5" target="_blank" rel="noopener noreferrer">こちらから予約</a></p>
+    <p class="fallback">日本時間で表示しています。うまく表示されない場合は <a id="booking-link" href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ37TB8RHTqmt2CUYF2OyKI7GbeVfeK6LOQavePNkC_7EHk4y3t7g8H8cEiM6FDZC185T2nFx2ZP" target="_blank" rel="noopener noreferrer">こちらから予約</a></p>
   </section>
+<script>
+(function(){
+  var S={
+    "30":{frame:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ37TB8RHTqmt2CUYF2OyKI7GbeVfeK6LOQavePNkC_7EHk4y3t7g8H8cEiM6FDZC185T2nFx2ZP?gv=true",link:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ37TB8RHTqmt2CUYF2OyKI7GbeVfeK6LOQavePNkC_7EHk4y3t7g8H8cEiM6FDZC185T2nFx2ZP"},
+    "60":{frame:"https://calendar.google.com/calendar/appointments/schedules/AcZssZ3XoxGKvBMtOo6Hz45-ybwreitljRuN7MNbJOsFiM7mYYDdSa9QgGcOHAY4qnNlDL-VtbemhbVb?gv=true",link:"https://calendar.app.google/5KEGgd5cXiwzg21y5"}
+  };
+  var f=document.getElementById("booking-frame"),a=document.getElementById("booking-link"),bs=document.querySelectorAll(".len button");
+  function pick(k){if(!S[k])return;f.src=S[k].frame;a.href=S[k].link;bs.forEach(function(b){b.setAttribute("aria-pressed",b.dataset.len===k?"true":"false")});}
+  bs.forEach(function(b){b.addEventListener("click",function(){pick(b.dataset.len)})});
+  var q=new URLSearchParams(location.search).get("t");if(q==="60")pick("60");
+})();
+</script>
 </main>
 
 <footer class="foot">

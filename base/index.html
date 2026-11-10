@@ -286,12 +286,12 @@ p{color:var(--sub)}
 
 /* ---------- 面談の流れ ---------- */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative}
-.steps::before{content:"";position:absolute;top:27px;left:8%;right:8%;height:2px;background:var(--line)}
-.steps .fillbar{position:absolute;top:27px;left:8%;height:2px;width:84%;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.4s var(--ease)}
+.steps::before{content:"";position:absolute;top:27px;left:28px;width:calc(66.667% + 12px);height:2px;background:var(--line)}
+.steps .fillbar{position:absolute;top:27px;left:28px;height:2px;width:calc(66.667% + 12px);background:var(--blue);transform:scaleX(0);transform-origin:0 50%;transition:transform 1.4s var(--ease)}
 .steps.on .fillbar{transform:scaleX(1)}
 .step{position:relative;display:grid;gap:10px;justify-items:start;padding-right:8px}
-.step .no{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--blue);font-family:var(--f-num);font-weight:800;color:var(--blue);font-size:15px;position:relative;z-index:1}
-.step .no small{font-size:10px;display:block;line-height:1;color:var(--mute);font-weight:700}
+.step .no{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;background:#fff;border:2px solid var(--blue);font-family:var(--f-num);font-weight:800;color:var(--blue);font-size:19px;line-height:1;position:relative;z-index:1}
+.step .time{display:inline-block;font-family:var(--f-num);font-size:12.5px;font-weight:700;color:var(--blue);background:var(--sky);border-radius:999px;padding:4px 10px;line-height:1.3;margin-top:4px}
 .step p{font-size:14.5px}
 @media (max-width:760px){.steps{grid-template-columns:1fr;gap:22px}.steps::before,.steps .fillbar{display:none}}
 .promise{margin-top:30px;display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:20px 22px}
@@ -694,9 +694,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
     </div>
     <div class="steps" id="steps">
       <span class="fillbar"></span>
-      <div class="step rv"><span class="no"><span><small>0〜10分</small>01</span></span><h3>今の管理を聞かせてください</h3><p>何で管理していて、どこで手が止まっているかを伺います。</p></div>
-      <div class="step rv" style="--d:.1s"><span class="no"><span><small>10〜20分</small>02</span></span><h3>抜けている所を一緒に見つけます</h3><p>紹介・入金・追客のどこで漏れているかを書き出します。</p></div>
-      <div class="step rv" style="--d:.2s"><span class="no"><span><small>20〜30分</small>03</span></span><h3>実際の画面を触ってもらいます</h3><p>あなたの仕事に近い架空データで、毎日の使い方をお見せします。</p></div>
+      <div class="step rv"><span class="no">01</span><span class="time">0〜10分</span><h3>今の管理を聞かせてください</h3><p>何で管理していて、どこで手が止まっているかを伺います。</p></div>
+      <div class="step rv" style="--d:.1s"><span class="no">02</span><span class="time">10〜20分</span><h3>抜けている所を一緒に見つけます</h3><p>紹介・入金・追客のどこで漏れているかを書き出します。</p></div>
+      <div class="step rv" style="--d:.2s"><span class="no">03</span><span class="time">20〜30分</span><h3>実際の画面を触ってもらいます</h3><p>あなたの仕事に近い架空データで、毎日の使い方をお見せします。</p></div>
     </div>
     <div class="promise rv"><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6l-7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span><p><b>面談のあとに、しつこく追いかけることはしません。</b>「合わない」と思ったら、その場でそう言ってください。岩男からも、合わない方には正直にそう伝えます。ほかの高額な商品を勧めることもありません。</p></div>
   </div>

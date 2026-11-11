@@ -605,6 +605,8 @@ main:focus{outline:none}
 .base-price p{margin:0;color:var(--muted);font-size:13px}
 .base-price p:first-child{color:var(--fg);font-size:14px}
 .base-price strong{font-family:var(--display);font-size:clamp(28px,3vw,38px);letter-spacing:-.03em;color:var(--accent);margin-right:6px}
+.base-shot video{display:block;width:100%;height:auto;background:var(--ink-3);border-radius:18px;border:1px solid var(--line-strong);box-shadow:0 30px 80px rgba(0,0,0,.45)}
+.base-movie{max-width:1040px}
 .base-shot img{border-radius:18px;border:1px solid var(--line-strong);box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .base-shot figcaption{margin-top:10px;color:var(--subtle);font-size:12px}
 @media (max-width:960px){.base-feature{grid-template-columns:1fr}}

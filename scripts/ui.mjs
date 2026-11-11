@@ -14,7 +14,7 @@ export const page = (title, lead, body, group = 'about', extra = {}) => ({title,
 export const services = [
   {url:'sales.html', number:'01', label:'SALES OUTSOURCING', title:'営業代行', text:'新規顧客開拓からアポイント獲得、商談、クロージングまで。企業の営業活動を実行と改善の両面から支援します。', tags:['新規開拓','アポイント獲得','商談・クロージング']},
   {url:'promotion.html', number:'02', label:'SALES PROMOTION', title:'販促支援', text:'量販店や催事会場で、商品・サービスの魅力を届けます。接客、商談、スタッフ育成、現場運営まで支援します。', tags:['量販店','催事会場','販売・現場運営']},
-  {url:'systems.html', number:'03', label:'BUSINESS SYSTEMS', title:'システム販売', text:'CRMなど、現場で使える業務管理システムを提案・販売。顧客、案件、売上・入金、タスクを整理します。', tags:['顧客・案件管理','入金管理','業務の見える化']}
+  {url:'systems.html', number:'03', label:'BUSINESS SYSTEMS', title:'システム販売', text:'自社開発の顧客管理「CDM BASE」を提供。お客さん・紹介・案件・入金をひとつの画面で管理し、取りこぼしを防ぎます。', tags:['CDM BASE','紹介・案件管理','入金管理']}
 ];
 export const serviceCards = () => `<div class="service-grid">${services.map(s => `<article class="service-card"><div class="service-meta"><span class="service-number">${s.number}</span><span class="service-label">${s.label}</span></div><h3>${s.title}</h3><p>${s.text}</p><ul class="tags">${s.tags.map(t => `<li>${t}</li>`).join('')}</ul>${link(s.url, '詳しく見る')}${s.number === '03' ? '<button class="text-link demo-open" type="button" data-open-demo>CRMの画面イメージを見る'+arrow+'</button>' : ''}</article>`).join('')}</div>`;
 export const strengths = [
@@ -38,27 +38,28 @@ export const cases = [
 ];
 export const caseCards = () => `<div class="case-grid">${cases.map((c, i) => `<article class="case-card"><span class="small-label">${c.label}</span><span class="case-index">${String(i+1).padStart(2,'0')}</span><h3>${c.title}</h3><p>${c.text}</p>${link(c.url, '支援内容を見る')}</article>`).join('')}</div>`;
 export const news = [
+  {url:'news-base.html', date:'2026.11.11', category:'SERVICE', title:'顧客管理「CDM BASE」と、オンライン相談の日程調整ページを公開しました'},
   {url:'news-renewal.html', date:'2026.09.28', category:'CORPORATE', title:'コーポレートサイトをリニューアルしました'},
   {url:'news-services.html', date:'2026.09.28', category:'SERVICE', title:'営業代行・販促支援・システム販売の詳細ページを公開しました'},
   {url:'news-recruit.html', date:'2026.09.28', category:'RECRUIT', title:'採用情報・募集要項を更新しました'}
 ];
-export const newsRows = () => `<div class="news-list">${news.map(n => `<article class="news-row" data-category="${n.category}"><time datetime="2026-09-28">${n.date}</time><span class="news-category">${n.category}</span>${link(n.url, n.title, 'news-link')}</article>`).join('')}</div>`;
+export const newsRows = () => `<div class="news-list">${news.map(n => `<article class="news-row" data-category="${n.category}"><time datetime="${n.date.replaceAll('.','-')}">${n.date}</time><span class="news-category">${n.category}</span>${link(n.url, n.title, 'news-link')}</article>`).join('')}</div>`;
 export const faq = [
   ['営業代行はどの工程から依頼できますか？','新規開拓、アポイント獲得、商談、クロージングなどから、必要な工程をご相談いただけます。商材や対象顧客、現在の体制を伺い、支援範囲をご提案します。'],
   ['営業戦略が決まっていなくても相談できますか？','ご相談いただけます。対象顧客、商品の特徴、現在の課題を整理し、実行する業務と確認する指標を一緒に考えます。'],
   ['販促支援はどのような場所に対応しますか？','量販店、商業施設、催事会場などの販売現場を想定しています。会場の所在地、開催日、商材、必要人数を添えてご相談ください。対応可否は案件ごとに確認します。'],
   ['通信以外の商材も相談できますか？','はい。通信関連の販売現場での経験を活かしながら、商材や販売条件に合わせた支援を検討します。専門知識や資格が必要な場合は、要件を確認して対応可否をご案内します。'],
   ['販促スタッフの育成や現場運営も依頼できますか？','接客・提案の進め方、スタッフへの共有、進捗の確認などもご相談いただけます。役割分担と管理範囲は開始前にすり合わせます。'],
-  ['CRMでは何を管理できますか？','顧客情報、案件の進捗、次回アクション、担当者、売上・入金予定、必要書類、タスクなどを管理する設計です。提供範囲や機能は、ご提案するシステム・契約によって異なります。'],
-  ['CRMの画面を見られますか？','システム販売ページの「CRMの画面イメージを見る」ボタンから、ダッシュボードと商材・ステータス設定の画像をご覧いただけます。操作できるデモではなく、画面イメージです。'],
+  ['CDM BASEでは何を管理できますか？','お客さんの情報と紹介のつながり、商談・アポ、案件の進み具合、入金予定、タスクをひとつの画面で管理できます。紹介率の自動計算、入金遅れや期限のお知らせ、商談のAI要約、名刺の読み取りにも対応しています。'],
+  ['CDM BASEの画面を見られますか？','30分のオンライン画面見学で、実際の画面を触っていただけます。日程調整ページから空いている日時を選んでご予約ください。システム販売ページでも画面画像（架空データのデモ）をご覧いただけます。'],
   ['現在使っている管理方法に合わせて導入できますか？','現在の表計算シート、案件の流れ、管理項目を伺い、導入方法を検討します。データ移行、外部連携、追加開発の可否と費用は個別に確認します。'],
-  ['費用や契約期間を教えてください。','CRMと制作・業務支援の基本料金は、各商品ページに税別・税込の金額を掲載しています。追加作業やクラウド等の実費は個別に確認します。営業代行・販促支援の費用や期間は案件の条件によって異なるため、ヒアリング後にご提示します。'],
+  ['費用や契約期間を教えてください。','CDM BASEは月10,000円（税別・1名分込み）、2人目から1名につき月1,000円で、最低利用期間はありません。制作・業務支援の基本料金は、各商品ページに税別・税込の金額を掲載しています。追加作業やクラウド等の実費は個別に確認します。営業代行・販促支援の費用や期間は案件の条件によって異なるため、ヒアリング後にご提示します。'],
   ['成果報酬で依頼できますか？','案件によって検討できます。成果の定義、対象業務、報告方法、報酬発生条件を確認します。すべての案件が完全成果報酬になるわけではありません。'],
-  ['対応エリアはどこですか？','神奈川県平塚市を拠点としています。現地での販促支援は場所や日程、営業代行は実施方法によって対応可否が変わりますので、個別にご相談ください。'],
+  ['対応エリアはどこですか？','CDM BASEやご相談はオンラインで全国に対応しています。現地での販促支援は場所や日程、営業代行は実施方法によって対応可否が変わりますので、個別にご相談ください。'],
   ['未経験でも採用に応募できますか？','営業の基礎を学びたい方も歓迎しています。商材理解、顧客対応、提案などを実務で身につけ、習熟度に合わせて役割を広げます。'],
   ['業務委託はリモートで働けますか？','完全成果報酬の営業案件ではフルリモートが可能です。日給制の販促案件などは量販店・催事会場での稼働が中心で、すべての案件がリモート対応ではありません。'],
   ['パートナーとして連携できますか？','営業会社、販促会社、個人事業主、システム会社、案件をお持ちの企業などからのご相談を受け付けています。対応できる業務、地域、体制をお知らせください。'],
-  ['問い合わせフォームから直接送信されますか？','入力内容を確認後、「メールアプリを開く」を押すと、ceo@cdm-lifesupport.com 宛てのメールを作成します。最後にメールアプリで送信してください。公式LINEからのご相談も可能です。']
+  ['問い合わせフォームから直接送信されますか？','入力内容を確認後、「メールアプリを開く」を押すと、ceo@cdm-lifesupport.com 宛てのメールを作成します。最後にメールアプリで送信してください。公式LINEからのご相談も可能です。オンラインでの相談をご希望の場合は、日程調整ページから日時を選んでご予約いただけます。']
 ];
 export const faqItems = (items = faq) => `<div class="faq-list">${items.map(([q,a]) => `<details><summary>${q}<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></summary><p>${a}</p></details>`).join('')}</div>`;
 export const numbers = () => `<div class="numbers"><div><strong><b data-count="2025">2025</b><span>年</span></strong><p>2月設立</p></div><div><strong><b data-count="3">3</b><span>領域</span></strong><p>営業代行・販促支援・システム販売</p></div><div><strong><b data-count="5">5</b><span>商品</span></strong><p>CRM・ホームページ・LP・Excel管理表・業務マニュアル</p></div></div>`;

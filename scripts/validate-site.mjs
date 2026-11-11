@@ -9,7 +9,7 @@ const ink=stylesheet.match(/--ink:\s*(#[0-9a-f]{6})/i)[1];
 assert(!/#07573c|#1766da|#0b4fab/i.test(stylesheet),'legacy green and vivid blue are not mixed into the new palette');
 const files=(await readdir(root)).filter(f=>f.endsWith('.html'));
 const documents=new Map(await Promise.all(files.map(async f=>[f,await readFile(resolve(root,f),'utf8')])));
-assert.equal(files.length,36,'35 content pages and 404');
+assert.equal(files.length,37,'36 content pages and 404');
 const ids=new Map();
 const titles=new Set();
 const destinations=new Map();
@@ -69,8 +69,10 @@ for(const product of products){
 }
 for(const [file,html] of documents) assert(!/coconala\.com|lancers\.jp|ココナラ|ランサーズ/.test(html),`${file}: no marketplace referral`);
 const crm=documents.get('systems.html');
-for(const amount of ['50,000円','5,000円','2,000円','150,000円','3,000円','165,000円']) assert(crm.includes(amount),`CRM preserved pricing: ${amount}`);
-assert(crm.includes('外販環境の受入検証を進めています') && crm.includes('購入前のご相談が必須'),'CRM validation and consultation caveat');
+for(const amount of ['10,000円','1,000円']) assert(crm.includes(amount),`CDM BASE pricing: ${amount}`);
+assert(!/150,000円|買い切り/.test(crm),'old CRM pricing removed');
+for(const [file,html] of documents) assert(html.includes('href="meeting/"'),`${file}: links to the meeting scheduler`);
+assert(documents.get('index.html').includes('id="cdm-base"') && documents.get('index.html').includes('href="base/"'),'TOP features CDM BASE');
 assert(documents.get('contact.html').includes('このフォームから直接送信はされません'),'form explains mail workflow');
 assert(documents.get('contact.html').includes('営業・勧誘・売り込みを目的としたお問い合わせはご遠慮ください。返信いたしません。'),'contact page declines sales pitches');
 for(const [file,html] of documents) assert(html.includes('class="menu-toggle"') && html.includes('aria-label="メインナビゲーション"'),`${file}: hamburger menu`);

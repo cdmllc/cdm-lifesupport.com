@@ -5,9 +5,9 @@ const consult = service => `contact.html?type=${encodeURIComponent('事業のご
 // Official-site prices are before tax. All product leads stay on this site.
 export const products = [
   {
-    key:'crm', number:'01', label:'CUSTOMER MANAGEMENT', name:'顧客・案件管理CRM', url:'systems.html',
-    summary:'顧客、案件、次回対応、入金予定を一つに整理。利用方法と環境を確認して導入を検討します。',
-    price:'初期50,000円＋月額5,000円／買い切り150,000円', tax:'いずれも税別。詳細はシステム販売ページへ。'
+    key:'crm', number:'01', label:'CUSTOMER MANAGEMENT', name:'CDM BASE（顧客管理）', url:'systems.html',
+    summary:'紹介で仕事を回す人の顧客管理。お客さん・紹介・案件・入金をひとつの画面にまとめます。',
+    price:'月10,000円（1名分込み）', tax:'税別。2人目から1名につき月1,000円。最低利用期間なし。'
   },
   {
     key:'website', number:'02', label:'WEBSITE', name:'ホームページ制作', url:'website.html',

@@ -6,8 +6,8 @@ const consult = service => `contact.html?type=${encodeURIComponent('事業のご
 export const products = [
   {
     key:'crm', number:'01', label:'CUSTOMER MANAGEMENT', name:'CDM BASE（顧客管理）', url:'systems.html',
-    summary:'紹介で仕事を回す人の顧客管理。お客さん・紹介・案件・入金をひとつの画面にまとめます。',
-    price:'月10,000円（1名分込み）', tax:'税別。2人目から1名につき月1,000円。最低利用期間なし。'
+    summary:'一件の紹介を、次の紹介につなげる。紹介元・案件・次にやること・紹介者への報告を1つの画面でつなぎ、月1回の相談で紹介が続く仕組みをつくります。',
+    price:'月10,000円（1名分込み）', tax:'税別。2人目から1名につき月1,000円。月払いは最低3か月。'
   },
   {
     key:'website', number:'02', label:'WEBSITE', name:'ホームページ制作', url:'website.html',

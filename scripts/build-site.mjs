@@ -26,8 +26,8 @@ const analyticsTag = `<!-- Google tag (gtag.js) -->
 const groups = [
   ['about','CDMについて','about.html', [['about.html','CDMについて'],['philosophy.html','理念・行動指針'],['message.html','代表メッセージ'],['strength.html','私たちの強み']]],
   ['business','事業内容','business.html', [['business.html','事業一覧'],['sales.html','営業代行'],['promotion.html','販促支援'],['systems.html','システム販売'],['quality.html','品質管理'],['flow.html','支援の流れ'],['faq.html','よくあるご質問']]],
-  ['products','商品・料金','products.html', [['products.html','商品一覧'],['systems.html','CDM BASE（顧客管理）'],['website.html','ホームページ制作'],['lp.html','LP制作'],['excel.html','Excel管理表作成'],['manual.html','業務マニュアル作成']]],
-  ['cases','支援事例','cases.html', [['cases.html','支援事例一覧'],['case-promotion.html','販促支援の取り組み'],['case-sales.html','新規顧客開拓の取り組み'],['case-crm.html','CRMの活用イメージ']]],
+  ['products','商品・料金','products.html', [['products.html','商品一覧'],['systems.html','CDM BASE（紹介営業）'],['website.html','ホームページ制作'],['lp.html','LP制作'],['excel.html','Excel管理表作成'],['manual.html','業務マニュアル作成']]],
+  ['cases','支援事例','cases.html', [['cases.html','支援事例一覧'],['case-promotion.html','販促支援の取り組み'],['case-sales.html','新規顧客開拓の取り組み'],['case-crm.html','仲介での紹介営業の例']]],
   ['company','会社情報','company.html', [['company.html','会社概要'],['history.html','沿革'],['numbers.html','数字で見るCDM'],['partner.html','パートナー募集'],['meeting/','日程調整（オンライン相談）']]],
   ['news','お知らせ','news.html', [['news.html','お知らせ一覧']]],
   ['recruit','採用情報','recruit.html', [['recruit.html','採用情報'],['careers.html','働く環境・キャリア'],['jobs.html','募集要項']]]
@@ -40,7 +40,7 @@ const demo = () => `<dialog id="crm-demo" aria-labelledby="demo-title"><div clas
 for (const [file, p] of Object.entries(pages)) {
   p.file=file;
   const canonical = `${site}/${file==='index.html'?'':file}`;
-  const title = file==='index.html' ? '合同会社CDM｜顧客管理CDM BASE・営業代行・販促支援' : `${p.title}｜合同会社CDM`;
+  const title = file==='index.html' ? '合同会社CDM｜紹介営業のCDM BASE・営業代行・販促支援' : `${p.title}｜合同会社CDM`;
   const group = groups.find(([g]) => g===p.group);
   const breadcrumbs = file==='index.html' ? [] : [{name:'TOP',url:`${site}/`},...(group && group[2]!==file ? [{name:group[1],url:`${site}/${group[2]}`}] : []),{name:p.title,url:canonical}];
   const schema = [{'@context':'https://schema.org','@type':'Organization',name:'合同会社CDM',url:site,logo:`${site}/assets/cdm-logo.png`,email:'ceo@cdm-lifesupport.com',telephone:'070-9129-0907',foundingDate:'2025-02',address:{'@type':'PostalAddress',addressRegion:'神奈川県',addressLocality:'平塚市',streetAddress:'東八幡2-9-29',addressCountry:'JP'}},...(breadcrumbs.length ? [{'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:breadcrumbs.map((b,i)=>({'@type':'ListItem',position:i+1,name:b.name,item:b.url}))}] : []),...(p.schema||[])];

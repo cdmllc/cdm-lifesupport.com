@@ -5,7 +5,7 @@ const consult = service => `contact.html?type=${encodeURIComponent('事業のご
 // Official-site prices are before tax. All product leads stay on this site.
 export const products = [
   {
-    key:'crm', number:'01', label:'CUSTOMER MANAGEMENT', name:'CDM BASE（顧客管理）', url:'systems.html',
+    key:'crm', number:'01', label:'CUSTOMER MANAGEMENT', name:'CDM BASE（紹介営業）', url:'systems.html',
     summary:'一件の紹介を、次の紹介につなげる。紹介元・案件・次にやること・紹介者への報告を1つの画面でつなぎ、月1回の相談で紹介が続く仕組みをつくります。',
     price:'月10,000円（1名分込み）', tax:'税別。2人目から1名につき月1,000円。月払いは最低3か月。'
   },

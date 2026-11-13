@@ -14,7 +14,7 @@ export const page = (title, lead, body, group = 'about', extra = {}) => ({title,
 export const services = [
   {url:'sales.html', number:'01', label:'SALES OUTSOURCING', title:'営業代行', text:'新規顧客開拓からアポイント獲得、商談、クロージングまで。企業の営業活動を実行と改善の両面から支援します。', tags:['新規開拓','アポイント獲得','商談・クロージング']},
   {url:'promotion.html', number:'02', label:'SALES PROMOTION', title:'販促支援', text:'量販店や催事会場で、商品・サービスの魅力を届けます。接客、商談、スタッフ育成、現場運営まで支援します。', tags:['量販店','催事会場','販売・現場運営']},
-  {url:'systems.html', number:'03', label:'BUSINESS SYSTEMS', title:'システム販売', text:'自社開発の顧客管理「CDM BASE」を提供。お客さん・紹介・案件・入金をひとつの画面で管理し、取りこぼしを防ぎます。', tags:['CDM BASE','紹介・案件管理','入金管理']}
+  {url:'systems.html', number:'03', label:'BUSINESS SYSTEMS', title:'システム販売', text:'紹介をいただいたあと、誰が、いつ、紹介元へ経過を返すか。CDM BASEで紹介営業の流れを整えます。', tags:['CDM BASE','紹介・案件管理','入金管理']}
 ];
 export const serviceCards = () => `<div class="service-grid">${services.map(s => `<article class="service-card"><div class="service-meta"><span class="service-number">${s.number}</span><span class="service-label">${s.label}</span></div><h3>${s.title}</h3><p>${s.text}</p><ul class="tags">${s.tags.map(t => `<li>${t}</li>`).join('')}</ul>${link(s.url, '詳しく見る')}${s.number === '03' ? '<button class="text-link demo-open" type="button" data-open-demo>CRMの画面イメージを見る'+arrow+'</button>' : ''}</article>`).join('')}</div>`;
 export const strengths = [
@@ -34,7 +34,7 @@ export const values = [
 export const cases = [
   {url:'case-promotion.html', label:'販促支援', title:'量販店・催事会場での販売活動を支える', text:'接客から商談、クロージング、現場の振り返りまで。販売現場を動かす支援内容をご紹介します。'},
   {url:'case-sales.html', label:'営業代行', title:'新規顧客獲得に向けた営業活動を整える', text:'ターゲット整理、アプローチ、商談化、進捗共有。新規開拓に必要な実行と改善の流れをご紹介します。'},
-  {url:'case-crm.html', label:'システム販売', title:'不動産賃貸仲介の顧客・案件・入金を一元管理', text:'次の対応と入金予定を把握しやすくする、CRMの設計・活用イメージをご紹介します。'}
+  {url:'case-crm.html', label:'システム販売', title:'賃貸仲介で、内見後に紹介者へ報告する', text:'一件のご紹介から、担当者への引き継ぎと内見後の報告までをご紹介します。'}
 ];
 export const caseCards = () => `<div class="case-grid">${cases.map((c, i) => `<article class="case-card"><span class="small-label">${c.label}</span><span class="case-index">${String(i+1).padStart(2,'0')}</span><h3>${c.title}</h3><p>${c.text}</p>${link(c.url, '支援内容を見る')}</article>`).join('')}</div>`;
 export const news = [

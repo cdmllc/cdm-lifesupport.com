@@ -71,6 +71,9 @@ p{color:var(--sub)}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-family:var(--f-num);font-weight:800;letter-spacing:.02em;font-size:17px}
 .brand i{width:30px;height:30px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(140deg,var(--blue-2),#5fd3c4);font-style:normal}
 .brand small{display:block;font-family:var(--f-body);font-weight:500;font-size:11px;opacity:.7;letter-spacing:.04em;line-height:1.2}
+.brand-logo{display:block;height:54px;width:auto;aspect-ratio:4444/1452;--logo-accent:#5fd3c4;transition:height .35s var(--ease)}
+.hdr.solid .brand-logo{height:46px;--logo-accent:var(--blue)}
+.foot-logo{display:block;height:58px;width:auto;aspect-ratio:4444/1452;color:#fff;--logo-accent:#5fd3c4;margin-bottom:6px}
 .nav{display:flex;align-items:center;gap:26px;font-size:14px}
 .nav a{text-decoration:none;color:rgba(255,255,255,.82);transition:color .2s}
 .nav a:hover{color:#fff}
@@ -81,7 +84,7 @@ p{color:var(--sub)}
 .hdr.solid .nav a:hover{color:var(--navy)}
 .hdr.solid .nav .pill{color:#fff}
 @media (max-width:860px){.nav a:not(.pill){display:none}}
-@media (max-width:440px){.brand small{display:none}.nav .pill{padding:8px 14px;font-size:13px}}
+@media (max-width:440px){.brand-logo{height:44px}.hdr.solid .brand-logo{height:40px}.brand small{display:none}.nav .pill{padding:8px 14px;font-size:13px}}
 
 /* ---------- ボタン ---------- */
 .btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:12px;overflow:hidden;text-decoration:none;font-family:var(--f-body);font-weight:700;font-size:17px;color:#fff;background:var(--blue);padding:18px 30px;border-radius:12px;border:0;cursor:pointer;box-shadow:0 10px 30px -8px rgba(22,70,200,.6),inset 0 1px 0 rgba(255,255,255,.18);transition:transform .25s var(--ease),box-shadow .25s var(--ease),background .25s}
@@ -435,7 +438,8 @@ input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;bac
 .final .assure{justify-content:center;color:rgba(255,255,255,.7);margin-top:16px}
 .final .assure svg{color:#5fd3c4}
 footer{background:#08152a;color:rgba(255,255,255,.55);font-size:12.5px;line-height:1.9;padding-block:32px calc(110px + env(safe-area-inset-bottom,0px))}
-footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:12px}
+footer .foot-brand{flex-basis:100%}
 @media (min-width:861px){footer{padding-block:32px}}
 
 /* ---------- スマホ下の固定ボタン ---------- */
@@ -462,7 +466,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <header class="hdr" id="hdr">
   <div class="wrap">
-    <a class="brand" href="#top"><i><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="4" cy="4" r="2.4" fill="#fff"/><circle cx="12" cy="8" r="2.4" fill="#fff"/><circle cx="4" cy="12" r="2.4" fill="#fff"/><path d="M5.8 5.2 10.2 7M5.8 10.8l4.4-1.8" stroke="#fff" stroke-width="1.4" stroke-linecap="round"/></svg></i><span>CDM BASE<small>紹介を、次の紹介につなげる</small></span></a>
+    <a class="brand" href="#top" aria-label="CDM BASE ページの先頭へ"><svg class="brand-logo" viewBox="0 0 4444 1452" aria-hidden="true" focusable="false"><use href="../assets/brand/cdm-base.svg#logo"/></svg></a>
     <nav class="nav" aria-label="ページ内の移動">
       <a href="#pain">こんな方に</a>
       <a href="#feature">できること</a>
@@ -861,6 +865,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
 
 <footer>
   <div class="wrap">
+    <div class="foot-brand"><svg class="foot-logo" viewBox="0 0 4444 1452" aria-hidden="true" focusable="false"><use href="../assets/brand/cdm-base.svg#logo"/></svg></div>
     <span>CDM BASE ｜ 提供：合同会社CDM（代表社員 岩男大輝・Threads @cdmlifesupport）</span>
     <span>価格は税別です。ローンチ記念（初期費用40%オフ）は2026年11月30日のお申し込み分までです。</span>
   </div>

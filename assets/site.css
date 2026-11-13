@@ -43,6 +43,8 @@ body.menu-open .site-header::before{opacity:0}
 .nav{position:relative;height:var(--header);display:flex;align-items:center;justify-content:space-between;gap:24px}
 .brand{display:flex;align-items:center;gap:12px;text-decoration:none;white-space:nowrap;font-size:18px;font-weight:800;letter-spacing:.04em}
 .brand img{width:44px;height:44px;object-fit:contain;filter:url(#logo-light)}
+.brand-logo{display:block;height:56px;width:auto;aspect-ratio:4367/1452;color:var(--fg);--logo-accent:var(--accent)}
+.brand-footer .brand-logo{height:72px}
 .nav-actions{display:flex;align-items:center;gap:10px}
 .nav-cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border:1px solid var(--line-strong);border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;transition:background .3s,color .3s,border-color .3s}
 .nav-cta:hover,.nav-cta[aria-current]{background:var(--fg);color:var(--ink);border-color:var(--fg)}
@@ -553,6 +555,8 @@ main:focus{outline:none}
   .mobile-break{display:inline}
   .brand{font-size:16px;gap:8px}
   .brand img{width:36px;height:36px}
+  .brand-logo{height:46px}
+  .brand-footer .brand-logo{height:60px}
   .nav-cta{display:none}
   .menu-toggle{padding-left:14px}
   .hero{min-height:auto;padding:calc(var(--header) + 24px) 0 120px}

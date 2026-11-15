@@ -1,0 +1,8 @@
+.sales-steps { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); list-style:none; padding:0; margin:2rem 0 0; gap:1rem; }
+.sales-steps > li { border-top:3px solid #176bb1; padding:1.25rem; background:#f5f8fb; border-radius:0 0 12px 12px; }
+.sales-steps > li:last-child { background:#e9f3fd; }
+.sales-steps span { color:#145e9a; font-size:1rem; font-weight:700; font-variant-numeric:tabular-nums; }
+.sales-steps h3 { margin:.75rem 0; font-size:1.2rem; line-height:1.5; }
+.sales-steps p { margin:0; line-height:1.85; }
+@media (max-width:1000px) { .sales-steps { grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media (max-width:640px) { .sales-steps { grid-template-columns:minmax(0,1fr); gap:.75rem; } .sales-steps > li { border-top:0; border-left:3px solid #176bb1; padding:1rem 1.15rem; } }

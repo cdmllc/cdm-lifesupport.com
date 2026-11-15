@@ -16,7 +16,7 @@ export const services = [
   {url:'promotion.html', number:'02', label:'SALES PROMOTION', title:'販促支援', text:'量販店や催事会場で、商品・サービスの魅力を届けます。接客、商談、スタッフ育成、現場運営まで支援します。', tags:['量販店','催事会場','販売・現場運営']},
   {url:'systems.html', number:'03', label:'BUSINESS SYSTEMS', title:'システム販売', text:'紹介をいただいたあと、誰が、いつ、紹介元へ経過を返すか。CDM BASEで紹介営業の流れを整えます。', tags:['CDM BASE','紹介・案件管理','入金管理']}
 ];
-export const serviceCards = () => `<div class="service-grid">${services.map(s => `<article class="service-card"><div class="service-meta"><span class="service-number">${s.number}</span><span class="service-label">${s.label}</span></div><h3>${s.title}</h3><p>${s.text}</p><ul class="tags">${s.tags.map(t => `<li>${t}</li>`).join('')}</ul>${link(s.url, '詳しく見る')}${s.number === '03' ? '<button class="text-link demo-open" type="button" data-open-demo>CRMの画面イメージを見る'+arrow+'</button>' : ''}</article>`).join('')}</div>`;
+export const serviceCards = (items = services) => `<div class="service-grid">${items.map(s => `<article class="service-card"><div class="service-meta"><span class="service-number">${s.number}</span><span class="service-label">${s.label}</span></div><h3>${s.title}</h3><p>${s.text}</p><ul class="tags">${s.tags.map(t => `<li>${t}</li>`).join('')}</ul>${link(s.url, '詳しく見る')}${s.number === '03' ? '<button class="text-link demo-open" type="button" data-open-demo>CRMの画面イメージを見る'+arrow+'</button>' : ''}</article>`).join('')}</div>`;
 export const strengths = [
   ['現場経験','実際の営業・販売で得た知見をもとに、お客様と担当者の双方にとって動きやすい現場を考えます。'],
   ['実行力','方針や提案をまとめるだけでなく、実際の営業活動や現場運営に入り、行動につなげます。'],

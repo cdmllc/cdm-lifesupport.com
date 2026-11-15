@@ -54,13 +54,13 @@ footer .brand-logo{height:52px}
 .header-monogram{display:block;width:42px;height:48px}
 .brand-copy{display:grid;gap:3px}
 .brand-copy strong{font-size:22px;letter-spacing:.035em}
-.brand-copy small{font-size:13px;font-weight:600;color:#404045;letter-spacing:.02em}
+.brand-copy small{font-size:clamp(16px,2.5vw,18px);line-height:1.35;font-weight:700;color:#29292e}
 @media(max-width:400px){
   .nav{padding-inline:12px;gap:8px}
   .nav .brand{gap:7px}
   .header-monogram{width:34px;height:40px}
   .brand-copy strong{font-size:19px}
-  .nav .btn.sm{padding-inline:10px;white-space:nowrap}
+  .nav .btn.sm{padding-inline:8px;text-align:center}
 }
 .nav ul{display:flex;gap:30px;list-style:none;font-size:13px}
 .nav ul a{color:#424245;transition:color .2s}

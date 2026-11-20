@@ -50,5 +50,5 @@ for (const [file, p] of Object.entries(pages)) {
   const formatted = document.replace(/(<\/(?:head|header|main|section|article|div|footer|nav|form|aside|details|h[1-6]|figure|fieldset)>)/g, '$1\n').replace(/(<(?:head|header|main|section|article|div|footer|nav|form|aside|details|h[1-6]|figure|fieldset)\b)/g, '\n$1');
   await writeFile(resolve(root,file),file==='404.html' ? formatted.replace('<meta charset="utf-8">','<meta charset="utf-8"><base href="/">') : formatted);
 }
-await writeFile(resolve(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${Object.keys(pages).filter(f=>f!=='404.html').map(f=>`<url><loc>${site}/${f==='index.html'?'':f}</loc></url>`).join('')}</urlset>\n`);
+await writeFile(resolve(root,'sitemap.xml'),`<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${[...new Set([...Object.keys(pages).filter(f=>f!=='404.html'),'base/'])].map(f=>`<url><loc>${site}/${f==='index.html'?'':f}</loc></url>`).join('')}</urlset>\n`);
 console.log(`Built ${Object.keys(pages).length} static pages (${assetVersion}).`);
